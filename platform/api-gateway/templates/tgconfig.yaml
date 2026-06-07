@@ -3,7 +3,7 @@ kind: TargetGroupConfiguration
 metadata:
   name: custom-tg-config
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   targetReference:
     name: backend

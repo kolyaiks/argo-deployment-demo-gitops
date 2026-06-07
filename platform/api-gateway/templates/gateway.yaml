@@ -5,7 +5,7 @@ metadata:
   namespace: platform
   annotations:
     alb.ingress.kubernetes.io/certificate-arn: {{ .Values.gateway.certificateArn | quote }}
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   gatewayClassName: alb
   infrastructure:
