@@ -1,0 +1,10 @@
+# https://repost.aws/articles/ARLz9nw4xwQxeccccvgez8cQ
+# to make sure that gateway will provision the public lb instead of the default internal one
+apiVersion: gateway.k8s.aws/v1beta1
+kind: LoadBalancerConfiguration
+metadata:
+  name: internet-facing-config
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  scheme: internet-facing
