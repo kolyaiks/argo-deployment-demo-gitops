@@ -5,6 +5,7 @@ metadata:
   namespace: platform
   annotations:
     alb.ingress.kubernetes.io/certificate-arn: {{ .Values.gateway.certificateArn | quote }}
+    alb.ingress.kubernetes.io/scheme: internet-facing
 spec:
   gatewayClassName: alb
   listeners:
