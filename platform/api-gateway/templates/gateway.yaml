@@ -1,0 +1,17 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Values.gateway.name }}
+  namespace: platform
+  annotations:
+    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.gateway.certificateArn | quote }}
+spec:
+  gatewayClassName: alb
+  listeners:
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: {{ .Values.gateway.hostname | quote }}
+      allowedRoutes:
+        namespaces:
+          from: All

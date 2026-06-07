@@ -1,0 +1,16 @@
+# Ignore packaged Helm charts (tarballs generated via 'helm package')
+*.tgz
+
+# Ignore Helm lock files (if you want dependencies downloaded dynamically via 'helm dependency update')
+# Note: Keep these commented out if you prefer pinning strict versions in source control
+# Chart.lock
+# requirements.lock
+
+# Ignore the downloaded subchart dependencies directory
+# Standard practice is to let Helm fetch these during CI/CD instead of committing them
+**/charts/
+
+# Avoid tracking local repositories or cache directories 
+.helm/
+
+/.idea/

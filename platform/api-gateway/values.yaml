@@ -1,0 +1,12 @@
+gateway:
+  name: shared-gateway
+
+  # AWS Load Balancer Controller GatewayClass
+  gatewayClassName: alb
+
+  # Public DNS name for the shared entry point
+  hostname: argo-deployment-demo.niks.cloud
+
+  # ACM certificate ARN for HTTPS
+  certificateArn: arn:aws:acm:us-east-1:228305238849:certificate/440021b8-b964-4cd2-bc9b-7876d0b74ba6
+
