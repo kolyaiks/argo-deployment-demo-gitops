@@ -1,7 +1,0 @@
-# https://repost.aws/articles/ARwuFtb4dlQm-6PhHYH8zezQ/implementing-kubernetes-gateway-api-using-aws-load-balancer-controller-part-ii-l7-albgatewayapi
-apiVersion: gateway.networking.k8s.io/v1beta1
-kind: GatewayClass
-metadata:
-  name: alb
-spec:
-  controllerName: gateway.k8s.aws/alb
