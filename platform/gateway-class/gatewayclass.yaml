@@ -3,4 +3,4 @@ kind: GatewayClass
 metadata:
   name: alb
 spec:
-  controllerName: elbv2.k8s.aws/gateway-api-controller
+  controllerName: gateway.k8s.aws/alb
