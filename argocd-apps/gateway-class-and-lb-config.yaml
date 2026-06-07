@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/kolyaiks/argo-deployment-demo-gitops
     targetRevision: main
-    path: platform/gateway-class
+    path: platform/gateway-class-and-lb-config
 
   destination:
     server: https://kubernetes.default.svc
