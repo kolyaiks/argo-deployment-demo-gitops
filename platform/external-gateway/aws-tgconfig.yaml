@@ -4,7 +4,7 @@ metadata:
   name: custom-tg-config
   namespace: platform
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   targetReference:
     name: backend
