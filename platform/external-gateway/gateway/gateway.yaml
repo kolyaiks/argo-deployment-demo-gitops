@@ -1,10 +1,10 @@
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
-  name: {{ .Values.gateway.name }}
+  name: external-alb-gw
   namespace: platform
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   gatewayClassName: alb
   infrastructure:

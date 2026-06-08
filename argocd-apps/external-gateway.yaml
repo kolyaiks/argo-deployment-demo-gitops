@@ -1,31 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: api-gateway
+  name: external-gateway
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
-
   source:
     repoURL: https://github.com/kolyaiks/argo-deployment-demo-gitops
     targetRevision: main
-    path: platform/api-gateway
-    helm:
-      valueFiles:
-        - values.yaml
-
+    path: platform/external-gateway
   destination:
     server: https://kubernetes.default.svc
-    namespace: platform
-
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-
-    syncOptions:
-      - CreateNamespace=true
-      - ApplyOutOfSyncOnly=true
-      - PruneLast=true
