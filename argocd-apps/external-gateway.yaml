@@ -11,6 +11,8 @@ spec:
     repoURL: https://github.com/kolyaiks/argo-deployment-demo-gitops
     targetRevision: main
     path: platform/external-gateway
+    directory:
+      recurse: false
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
