@@ -1,5 +1,0 @@
-resources:
-  - gatewayclass/gatewayclass.yaml
-  - gateway/gateway.yaml
-  - aws/lbconfig.yaml
-  - aws/tgconfig.yaml
