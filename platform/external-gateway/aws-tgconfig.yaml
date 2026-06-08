@@ -2,6 +2,7 @@ apiVersion: gateway.k8s.aws/v1beta1
 kind: TargetGroupConfiguration
 metadata:
   name: custom-tg-config
+  namespace: platform
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 spec:

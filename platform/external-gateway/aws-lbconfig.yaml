@@ -4,6 +4,7 @@ apiVersion: gateway.k8s.aws/v1beta1
 kind: LoadBalancerConfiguration
 metadata:
   name: internet-facing-config
+  namespace: platform
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 spec:
