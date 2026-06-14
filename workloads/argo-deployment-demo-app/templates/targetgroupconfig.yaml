@@ -2,7 +2,7 @@ apiVersion: gateway.k8s.aws/v1beta1
 kind: TargetGroupConfiguration
 metadata:
   name: custom-tg-config-{{ .Values.namespace }}
-  namespace: {{ .Values.namespace }}
+  namespace: platform
 spec:
   targetReference:
     group: ""
