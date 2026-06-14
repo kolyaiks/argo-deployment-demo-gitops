@@ -1,0 +1,13 @@
+apiVersion: gateway.k8s.aws/v1beta1
+kind: TargetGroupConfiguration
+metadata:
+  name: custom-tg-config-{{ .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+spec:
+  targetReference:
+    group: ""
+    kind: Service
+    name: argo-deployment-demo-app-svc-{{ .Values.namespace }}
+    namespace: {{ .Values.namespace }}
+  defaultConfiguration:
+    targetType: ip
