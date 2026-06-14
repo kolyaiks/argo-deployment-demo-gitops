@@ -6,6 +6,8 @@ metadata:
     app: argo-deployment-demo-app-{{ .Values.namespace }}
   name: argo-deployment-demo-app-svc-{{ .Values.namespace }}
   namespace: {{ .Values.namespace }}
+  annotations:
+    gateway.k8s.aws/target-type: ip
 spec:
   ports:
     - port: 80 # Port accessible inside cluster
