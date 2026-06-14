@@ -1,0 +1,7 @@
+namespace: prod
+replicaCount: 1
+image:
+  repository: 228305238849.dkr.ecr.us-east-1.amazonaws.com/argo-deployment-demo-app
+  tag: "0.0.18"
+  pullPolicy: IfNotPresent
+hostname: prod-app.niks.cloud
