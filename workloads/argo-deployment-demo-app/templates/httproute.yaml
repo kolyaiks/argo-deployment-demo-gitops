@@ -9,10 +9,10 @@ spec:
   parentRefs:
     - name: external-alb-gw
       namespace: platform
-      sectionName: http
+      sectionName: https
 
   hostnames:
-    - {{ .Values.hostname }}
+    - {{ .Values.hostname }} ## there is no need for put explicit cert, it will be pulled by name
 
   rules:
     - matches:
