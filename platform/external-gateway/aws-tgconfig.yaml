@@ -1,15 +1,27 @@
-#apiVersion: gateway.k8s.aws/v1beta1
-#kind: TargetGroupConfiguration
-#metadata:
-#  name: custom-tg-config
-#  namespace: platform
-#  annotations:
-#    argocd.argoproj.io/sync-wave: "0"
-#spec:
-#  targetReference:
-#    group: ""
-#    kind: Service
-#    name: argo-deployment-demo-app-svc-dev
-#    namespace: dev
-#  defaultConfiguration:
-#    targetType: ip
+## Setting targetType as IP for dev and prod services to avoid
+## "Failed build model due to TargetGroup port is empty. When using Instance targets, your service must be of type 'NodePort' or 'LoadBalancer"
+## on Gateway resource
+
+apiVersion: gateway.k8s.aws/v1beta1
+kind: TargetGroupConfiguration
+metadata:
+  name: custom-tg-config-dev
+  namespace: platform
+spec:
+  targetReference:
+    name: argo-deployment-demo-app-svc-dev
+    namespace: dev
+  defaultConfiguration:
+    targetType: ip
+---
+apiVersion: gateway.k8s.aws/v1beta1
+kind: TargetGroupConfiguration
+metadata:
+  name: custom-tg-config-prod
+  namespace: platform
+spec:
+  targetReference:
+    name: argo-deployment-demo-app-svc-prod
+    namespace: prod
+  defaultConfiguration:
+    targetType: ip
