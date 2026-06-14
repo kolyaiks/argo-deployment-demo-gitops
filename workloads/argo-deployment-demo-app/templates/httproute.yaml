@@ -1,0 +1,22 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: argo-deployment-demo-app-route-{{ .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+spec:
+  parentRefs:
+    - name: external-alb-gw
+      namespace: platform
+      sectionName: http
+
+  hostnames:
+    - {{ .Values.hostname }}
+
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: argo-deployment-demo-app-svc-{{ .Values.namespace }}
+          port: 80
