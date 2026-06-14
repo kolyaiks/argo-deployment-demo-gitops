@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: argo-deployment-demo-app-{{ .Values.namespace }}
+  name: argo-deployment-demo-app-svc-{{ .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+spec:
+  ports:
+    - port: 80 # Port accessible inside cluster
+      protocol: TCP
+      targetPort: 8080 # Port to forward to inside the pod
+  selector:
+    app: argo-deployment-demo-app-{{ .Values.namespace }}
+  type: ClusterIP
+status:
+  loadBalancer: {}

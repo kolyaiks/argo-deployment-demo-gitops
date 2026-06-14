@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: argo-deployment-demo-app-{{ .Values.namespace }}
+  name: argo-deployment-demo-app-{{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: argo-deployment-demo-app-{{ .Values.namespace }}
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: argo-deployment-demo-app-{{ .Values.namespace }}
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: argo-deployment-demo-app-{{ .Values.namespace }}
+                topologyKey: kubernetes.io/hostname
+      containers:
+        - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          name: argo-deployment-demo-app-{{ .Values.namespace }}
+          resources: {}
+          #        env:
+          #          - name: SPRING_PROFILES_ACTIVE
+          #            value: dev
+          # Mapping to config/ that will be scanned by SpringBoot app: https://stackoverflow.com/questions/66184897/spring-boot-override-application-yml-properties-from-kubernetes-configmap
+{{/*          volumeMounts:*/}}
+{{/*            - name: application-configuration-volume*/}}
+{{/*              mountPath: /app/config*/}}
+{{/*      volumes:*/}}
+{{/*        - name: "application-configuration-volume"*/}}
+{{/*          configMap:*/}}
+{{/*            name: "application-configuration"*/}}

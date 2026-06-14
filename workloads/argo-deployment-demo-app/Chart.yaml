@@ -1,0 +1,16 @@
+apiVersion: v2
+name: argo-deployment-demo-app
+description: A simple demo application deployed via ArgoCD and Helm
+type: application
+
+version: 0.1.0
+appVersion: "0.0.18"
+
+maintainers:
+  - name: kolyaiks
+    email: nik@niks.cloud
+
+home: https://github.com/kolyaiks/argo-deployment-demo-gitops
+
+sources:
+  - https://github.com/kolyaiks/argo-deployment-demo-gitops
