@@ -1,12 +1,12 @@
-apiVersion: gateway.k8s.aws/v1beta1
-kind: TargetGroupConfiguration
-metadata:
-  name: custom-tg-config
-  namespace: platform
-  annotations:
-    argocd.argoproj.io/sync-wave: "0"
-spec:
-  targetReference:
-    name: backend
-  defaultConfiguration:
-    targetType: ip
+#apiVersion: gateway.k8s.aws/v1beta1
+#kind: TargetGroupConfiguration
+#metadata:
+#  name: custom-tg-config
+#  namespace: platform
+#  annotations:
+#    argocd.argoproj.io/sync-wave: "0"
+#spec:
+#  targetReference:
+#    name: backend
+#  defaultConfiguration:
+#    targetType: ip
