@@ -1,23 +1,23 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: demo-app-dev
-  namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/kolyaiks/argo-deployment-demo-gitops
-    targetRevision: main
-    path: workloads/argo-deployment-demo-app
-    helm:
-      valueFiles:
-        - values-dev.yaml
-
-  destination:
-    server: https://kubernetes.default.svc
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+#apiVersion: argoproj.io/v1alpha1
+#kind: Application
+#metadata:
+#  name: demo-app-dev
+#  namespace: argocd
+#  annotations:
+#    argocd.argoproj.io/sync-wave: "1"
+#spec:
+#  project: default
+#  source:
+#    repoURL: https://github.com/kolyaiks/argo-deployment-demo-gitops
+#    targetRevision: main
+#    path: workloads/argo-deployment-demo-app
+#    helm:
+#      valueFiles:
+#        - values-dev.yaml
+#
+#  destination:
+#    server: https://kubernetes.default.svc
+#  syncPolicy:
+#    automated:
+#      prune: true
+#      selfHeal: true
