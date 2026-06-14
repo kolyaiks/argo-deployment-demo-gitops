@@ -10,7 +10,6 @@ metadata:
 spec:
   targetReference:
     name: argo-deployment-demo-app-svc-dev
-    namespace: dev
   defaultConfiguration:
     targetType: ip
 ---
@@ -22,6 +21,5 @@ metadata:
 spec:
   targetReference:
     name: argo-deployment-demo-app-svc-prod
-    namespace: prod
   defaultConfiguration:
     targetType: ip
