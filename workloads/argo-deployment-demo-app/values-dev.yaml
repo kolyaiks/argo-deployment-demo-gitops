@@ -5,3 +5,4 @@ image:
   tag: "0.0.18"
   pullPolicy: IfNotPresent
 hostname: dev-app.niks.cloud
+region: us-east-1
