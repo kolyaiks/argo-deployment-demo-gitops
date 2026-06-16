@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: app-sa
+  namespace: {{ .Values.namespace }}
+  annotations:
+    eks.amazonaws.com/role-arn: {{ .Values.aws_role_for_k8s_service_account}}

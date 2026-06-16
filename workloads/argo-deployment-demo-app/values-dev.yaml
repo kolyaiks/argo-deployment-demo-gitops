@@ -6,3 +6,4 @@ image:
   pullPolicy: IfNotPresent
 hostname: dev-app.niks.cloud
 region: us-east-1
+aws_role_for_k8s_service_account: arn:aws:iam::228305238849:role/argo-deployment-demo-cluster-dev-app-secrets

@@ -16,6 +16,7 @@ spec:
       labels:
         app: argo-deployment-demo-app-{{ .Values.namespace }}
     spec:
+      serviceAccountName: app-sa # service account that has access to pull the aws secret value
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -30,14 +31,24 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           name: argo-deployment-demo-app-{{ .Values.namespace }}
           resources: {}
-          #        env:
-          #          - name: SPRING_PROFILES_ACTIVE
-          #            value: dev
-          # Mapping to config/ that will be scanned by SpringBoot app: https://stackoverflow.com/questions/66184897/spring-boot-override-application-yml-properties-from-kubernetes-configmap
-{{/*          volumeMounts:*/}}
-{{/*            - name: application-configuration-volume*/}}
-{{/*              mountPath: /app/config*/}}
-{{/*      volumes:*/}}
-{{/*        - name: "application-configuration-volume"*/}}
-{{/*          configMap:*/}}
-{{/*            name: "application-configuration"*/}}
+          volumeMounts:
+            # Mapping the volume with the secret to create a secret app-k8s-secret and refer to it in env vars
+            - name: app-secretsmanager-{{ .Release.Name }}-volume
+              mountPath: /mnt/secrets
+              readOnly: true
+          # Once volume with the secrets is mapped, this config will map k8s secret keys as separate values
+          env:
+            - name: ENVIRONMENT
+              valueFrom:
+                secretKeyRef:
+                  name: app-k8s-secret
+                  key: k8s_secret_key_environment_name
+      volumes:
+        # volume with secrets values that are sensitive and values come from AWS SecretsManager
+        # must be mapped as a volume even if the end goal is to use env variables, otherwise secret won't be created
+        - name: app-secretsmanager-{{ .Release.Name }}-volume
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: app-aws-secrets # comes from SecretProviderClass' name
