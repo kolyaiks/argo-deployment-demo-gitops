@@ -1,0 +1,9 @@
+clusterName: argo-deployment-demo-cluster
+region: us-east-1
+vpcId: vpc-0436d256e7e29364e
+serviceAccount:
+  create: true
+  name: aws-load-balancer-controller
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::228305238849:role/alb-ingress-controller-argo-deployment-demo
+enableCertManager: false

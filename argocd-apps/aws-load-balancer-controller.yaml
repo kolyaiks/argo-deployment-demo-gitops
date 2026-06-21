@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-load-balancer-controller
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  project: default
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+
+  # using Argo multi-source approach here to pass the external values
+  sources:
+    - repoURL: https://aws.github.io/eks-charts
+      chart: aws-load-balancer-controller
+      targetRevision: 3.4.0
+      helm:
+        valueFiles:
+          - $values/platform/aws-load-balancer-controller/values.yaml
+    - repoURL: https://github.com/kolyaiks/argo-deployment-demo-gitops
+      targetRevision: main
+      ref: values
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
