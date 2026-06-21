@@ -4,6 +4,7 @@ metadata:
   name: aws-load-balancer-controller
   namespace: argocd
   annotations:
+    # should be installed after gateway-api-crds
     argocd.argoproj.io/sync-wave: "0"
 spec:
   project: default
