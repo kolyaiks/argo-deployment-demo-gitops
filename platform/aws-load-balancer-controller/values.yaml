@@ -1,6 +1,6 @@
 clusterName: argo-deployment-demo-cluster
 region: us-east-1
-vpcId: vpc-0b1ea4df849d131ae # TODO: set the new vpc id here
+vpcId: vpc-083bdd7672d99cf4e # TODO: set the new vpc id here
 serviceAccount:
   create: true
   name: aws-load-balancer-controller
