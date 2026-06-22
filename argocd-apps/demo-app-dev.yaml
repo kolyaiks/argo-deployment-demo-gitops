@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/kolyaiks/argo-deployment-demo-gitops
-    targetRevision: main
+    targetRevision: dev
     path: workloads/argo-deployment-demo-app
     helm:
       valueFiles:
