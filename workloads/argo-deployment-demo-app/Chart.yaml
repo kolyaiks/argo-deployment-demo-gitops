@@ -4,7 +4,7 @@ description: A simple demo application deployed via ArgoCD and Helm
 type: application
 
 version: 0.1.0
-appVersion: "0.0.18"
+appVersion: "0.0.9"
 
 maintainers:
   - name: kolyaiks
