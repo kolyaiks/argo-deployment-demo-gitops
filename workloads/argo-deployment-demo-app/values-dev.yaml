@@ -2,7 +2,7 @@ namespace: dev
 replicaCount: 1
 image:
   repository: 228305238849.dkr.ecr.us-east-1.amazonaws.com/argo-deployment-demo-app
-  tag: "0.0.8"
+  tag: "0.0.9"
   pullPolicy: IfNotPresent
 hostname: dev-app.niks.cloud
 region: us-east-1

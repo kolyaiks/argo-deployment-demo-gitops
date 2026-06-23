@@ -1,1 +1,0 @@
-1. figure out on what to do with the application properties that should contain environment value
